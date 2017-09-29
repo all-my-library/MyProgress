@@ -13,12 +13,48 @@ Link file JAR: <a href="https://github.com/all-my-library/MyProgress/tree/master
 </pre>
 <br/>
 <p><b>2: Call to show loading circle view</b></p>
-<pre>private void initLoadingCircle() {
+<pre>
+private void initLoadingCircle() {
 
         loadingCircleView = findViewById(R.id.loading_circle);
         loadingCircleView.showLoading(true);
         loadingCircleView.setBorderSize(4);
         loadingCircleView.setRadius(60);
         loadingCircleView.setLoadingColor(getResources().getColor(R.color.colorPrimary));
+        loadingCircleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                loadingCircleView.showLoading(!loadingCircleView.isShow());
+            }
+        });
+}
+</pre>
+<br/>
+<h3>LoadingDotView</h3>
+<p><b>1: Declare in xml</b></p>
+<pre>
+com.leduyhung.progresslibrary.loading.dot.LoadingDotView
+        android:id="@+id/loading_dot"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        custom:loading_dot_radius="7dp"
+        custom:loading_dot_distance="7dp"
+custom:loading_dot_color="@color/colorAccent"
+</pre>
+<br/>
+<p><b>2: Call to show loading dot view</b></p>
+<pre>
+private void initLoadingDotView() {
+
+        loadingDotView = findViewById(R.id.loading_dot);
+        loadingDotView.showLoading(true);
+        loadingDotView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                loadingDotView.showLoading(!loadingDotView.isShow());
+            }
+        });
 }
 </pre>
