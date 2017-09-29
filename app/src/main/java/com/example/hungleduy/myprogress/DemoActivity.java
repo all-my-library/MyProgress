@@ -2,18 +2,22 @@ package com.example.hungleduy.myprogress;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.leduyhung.progresslibrary.loading.circle.LoadingCircleView;
+import com.leduyhung.progresslibrary.loading.dot.LoadingDotView;
 
 public class DemoActivity extends AppCompatActivity {
 
     private LoadingCircleView loadingCircleView;
+    private LoadingDotView loadingDotView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
         initLoadingCircle();
+        initLoadingDotView();
     }
 
     private void initLoadingCircle() {
@@ -23,5 +27,25 @@ public class DemoActivity extends AppCompatActivity {
         loadingCircleView.setBorderSize(4);
         loadingCircleView.setRadius(60);
         loadingCircleView.setLoadingColor(getResources().getColor(R.color.colorPrimary));
+        loadingCircleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                loadingCircleView.showLoading(!loadingCircleView.isShow());
+            }
+        });
+    }
+
+    private void initLoadingDotView() {
+
+        loadingDotView = findViewById(R.id.loading_dot);
+        loadingDotView.showLoading(true);
+        loadingDotView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                loadingDotView.showLoading(!loadingDotView.isShow());
+            }
+        });
     }
 }

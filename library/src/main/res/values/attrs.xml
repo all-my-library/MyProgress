@@ -7,4 +7,10 @@
         <attr name="loading_circle_border_size" format="dimension"/>
         <attr name="loading_circle_border_color" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="LoadingDotView">
+        <attr name="loading_dot_radius" format="dimension"/>
+        <attr name="loading_dot_color" format="color"/>
+        <attr name="loading_dot_distance" format="dimension"/>
+    </declare-styleable>
 </resources>

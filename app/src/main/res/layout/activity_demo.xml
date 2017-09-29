@@ -17,4 +17,12 @@
         custom:loading_circle_radius="20dp"
         custom:loading_circle_border_size="2dp"
         custom:loading_circle_border_color="@color/colorAccent"/>
+
+    <com.leduyhung.progresslibrary.loading.dot.LoadingDotView
+        android:id="@+id/loading_dot"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        custom:loading_dot_radius="7dp"
+        custom:loading_dot_distance="7dp"
+        custom:loading_dot_color="@color/colorAccent"/>
 </LinearLayout>

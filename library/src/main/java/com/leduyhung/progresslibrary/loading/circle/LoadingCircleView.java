@@ -149,9 +149,6 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
             }
         }
 
-        if (thread != null)
-            thread.interrupt();
-        thread = null;
         if (holder.getSurface().isValid()) {
             c = holder.lockCanvas();
             if (c != null) {
@@ -165,16 +162,19 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
     public synchronized void showLoading(boolean show) {
 
         if (show) {
-
-            if (isStop) {
-                isStop = false;
+            if (thread == null) {
                 thread = new Thread(this);
                 thread.start();
             }
+            isStop = false;
         } else {
 
-            thread = null;
-            isStop = true;
+            if (thread != null) {
+
+                thread.interrupt();
+                thread = null;
+                isStop = true;
+            }
         }
     }
 

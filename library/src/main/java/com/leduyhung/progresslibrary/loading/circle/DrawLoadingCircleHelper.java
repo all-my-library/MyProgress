@@ -18,7 +18,7 @@ public class DrawLoadingCircleHelper {
 
     private int radius;
 
-    public DrawLoadingCircleHelper() {
+    DrawLoadingCircleHelper() {
 
         path = new Path();
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -31,22 +31,22 @@ public class DrawLoadingCircleHelper {
         paint.setColor(color);
     }
 
-    public void setRadius(int radius) {
+    void setRadius(int radius) {
 
         this.radius = radius;
     }
 
-    public void setBorderWidth(int width) {
+    void setBorderWidth(int width) {
 
         paint.setStrokeWidth(width);
     }
 
-    public void setLocationDraw(float left, float top, float right, float bottom) {
+    void setLocationDraw(float left, float top, float right, float bottom) {
 
         rectF.set(left + ((right / 2) - radius), top + ((bottom / 2) - radius), right - ((right / 2) - radius), bottom - ((bottom / 2) - radius));
     }
 
-    public void drawLoading(Canvas canvas, float progressStart, float progress) {
+    void drawLoading(Canvas canvas, float progressStart, float progress) {
 
         path.reset();
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
@@ -57,7 +57,7 @@ public class DrawLoadingCircleHelper {
         canvas.drawPath(path, paint);
     }
 
-    public void closeDraw(Canvas canvas) {
+    void closeDraw(Canvas canvas) {
 
         path.close();
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
