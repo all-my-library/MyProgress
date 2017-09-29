@@ -20,5 +20,8 @@ public class DemoActivity extends AppCompatActivity {
 
         loadingCircleView = findViewById(R.id.loading_circle);
         loadingCircleView.showLoading(true);
+        loadingCircleView.setBorderSize(4);
+        loadingCircleView.setRadius(60);
+        loadingCircleView.setLoadingColor(getResources().getColor(R.color.colorPrimary));
     }
 }

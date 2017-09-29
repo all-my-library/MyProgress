@@ -45,7 +45,7 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        setMeasuredDimension(radius * 2 + radius / 5, radius * 2 + radius / 5);
+        setMeasuredDimension(radius * 2 + loadingSize, radius * 2 + loadingSize);
     }
 
     @Override
@@ -189,9 +189,15 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
         drawLoadingCircleHelper.setColor(borderColor);
     }
 
-    public void setLoadingSize(int radius) {
+    public void setRadius(int radius) {
 
         this.radius = radius;
         drawLoadingCircleHelper.setRadius(radius);
+    }
+
+    public void setBorderSize(int borderSize) {
+
+        this.loadingSize = borderSize;
+        drawLoadingCircleHelper.setBorderWidth(loadingSize);
     }
 }
