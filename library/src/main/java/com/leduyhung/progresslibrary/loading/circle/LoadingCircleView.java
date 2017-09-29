@@ -200,4 +200,14 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
         this.loadingSize = borderSize;
         drawLoadingCircleHelper.setBorderWidth(loadingSize);
     }
+
+    public int getRadius() {
+
+        return radius;
+    }
+
+    public int getLoadingSize() {
+
+        return loadingSize;
+    }
 }
