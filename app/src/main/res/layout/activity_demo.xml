@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:custom="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOADING VIEW"/>
+
+    <com.leduyhung.progresslibrary.loading.circle.LoadingCircleView
+        android:id="@+id/loading_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:loading_circle_radius="20dp"
+        custom:loading_circle_border_size="2dp"
+        custom:loading_circle_border_color="@color/colorAccent"/>
+</LinearLayout>

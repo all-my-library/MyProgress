@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ATTRS for LoadingCircleView -->
+    <declare-styleable name="LoadingCircleView">
+        <attr name="loading_circle_radius" format="dimension"/>
+        <attr name="loading_circle_border_size" format="dimension"/>
+        <attr name="loading_circle_border_color" format="color"/>
+    </declare-styleable>
+</resources>
