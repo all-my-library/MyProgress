@@ -167,9 +167,9 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
         if (show) {
 
             if (isStop) {
+                isStop = false;
                 thread = new Thread(this);
                 thread.start();
-                isStop = false;
             }
         } else {
 
