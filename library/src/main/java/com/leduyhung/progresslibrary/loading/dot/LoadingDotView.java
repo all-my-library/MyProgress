@@ -105,8 +105,10 @@ public class LoadingDotView extends SurfaceView implements Runnable {
 
     private void initDotByWidth() {
 
-        int width = getWidth();
-        runDotHelper = new RunDotHelper(radiusDot, (width / (radiusDot * 4)) / 2, dotColor, distance);
+        if (runDotHelper == null) {
+            int width = getWidth();
+            runDotHelper = new RunDotHelper(radiusDot, (width / (radiusDot * 4)) / 2, dotColor, distance);
+        }
     }
 
     private void runDot() {
