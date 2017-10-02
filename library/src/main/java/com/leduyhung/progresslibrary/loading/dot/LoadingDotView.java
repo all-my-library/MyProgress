@@ -83,6 +83,7 @@ public class LoadingDotView extends SurfaceView implements Runnable {
             continue;
 
         runDot();
+        thread = null;
     }
 
     private void getAttribute(Context context, AttributeSet attrs) {

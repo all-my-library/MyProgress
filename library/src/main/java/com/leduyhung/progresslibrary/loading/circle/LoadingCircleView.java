@@ -77,7 +77,6 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
         if (thread != null)
             thread.interrupt();
         thread = null;
-        holder = null;
     }
 
     @Override
@@ -87,6 +86,7 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
             continue;
 
         runCircle();
+        thread = null;
     }
 
     private void getAttribute(Context context, AttributeSet attrs) {
