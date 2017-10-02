@@ -77,6 +77,7 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
         if (thread != null)
             thread.interrupt();
         thread = null;
+        holder = null;
     }
 
     @Override

@@ -25,4 +25,8 @@
         custom:loading_dot_radius="7dp"
         custom:loading_dot_distance="7dp"
         custom:loading_dot_color="@color/colorAccent"/>
+
+    <com.leduyhung.progresslibrary.progress.circle.ProgressCircleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
