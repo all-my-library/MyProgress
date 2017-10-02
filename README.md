@@ -2,6 +2,7 @@
 Link file JAR: <a href="https://github.com/all-my-library/MyProgress/tree/master/library/myjar_v1" title="">ProgressLibrary v1</a>
 # HOW TO USE
 <h3>LoadingCircleView</h3>
+<img src="https://github.com/all-my-library/MyProgress/blob/master/art/loading_circle.gif"></a>
 <p><b>1: Declare in xml</b></p>
 <pre> com.leduyhung.progresslibrary.loading.circle.LoadingCircleView
         android:id="@+id/loading_circle"
