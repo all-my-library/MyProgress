@@ -33,6 +33,7 @@ private void initLoadingCircle() {
 </pre>
 <br/>
 <h3>LoadingDotView</h3>
+<img src="https://github.com/all-my-library/MyProgress/blob/master/art/loading_dot.gif" style="max-width:100%"></a>
 <p><b>1: Declare in xml</b></p>
 <pre>
 com.leduyhung.progresslibrary.loading.dot.LoadingDotView
