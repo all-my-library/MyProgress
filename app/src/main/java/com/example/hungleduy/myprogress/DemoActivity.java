@@ -6,11 +6,13 @@ import android.view.View;
 
 import com.leduyhung.progresslibrary.loading.circle.LoadingCircleView;
 import com.leduyhung.progresslibrary.loading.dot.LoadingDotView;
+import com.leduyhung.progresslibrary.progress.circle.ProgressCircleView;
 
 public class DemoActivity extends AppCompatActivity {
 
     private LoadingCircleView loadingCircleView;
     private LoadingDotView loadingDotView;
+    private ProgressCircleView progressCircleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,7 @@ public class DemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_demo);
         initLoadingCircle();
         initLoadingDotView();
+        initProgressCircle();
     }
 
     private void initLoadingCircle() {
@@ -47,5 +50,11 @@ public class DemoActivity extends AppCompatActivity {
                 loadingDotView.showLoading(!loadingDotView.isShow());
             }
         });
+    }
+
+    private void initProgressCircle() {
+
+        progressCircleView = findViewById(R.id.progress_circle);
+        progressCircleView.setPercent(20);
     }
 }

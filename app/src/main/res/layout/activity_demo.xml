@@ -27,6 +27,7 @@
         custom:loading_dot_color="@color/colorAccent"/>
 
     <com.leduyhung.progresslibrary.progress.circle.ProgressCircleView
+        android:id="@+id/progress_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         custom:progress_circle_percent="90"

@@ -99,6 +99,20 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         thread = null;
     }
 
+    public void setPercent(int percent) {
+
+        if (!isStop) {
+
+            thread.interrupt();
+            percentRunning = 0;
+        }
+
+        thread = new Thread(this);
+        this.percent = percent;
+        calculatorTotalPercent();
+        thread.start();
+    }
+
     private void getAttribute(Context context, AttributeSet attrs) {
 
         if (attrs != null) {
@@ -145,7 +159,6 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
 
         Canvas c;
         percentRunning = 0;
-        Log.e("test", totalPercent + " ---->");
         while (percentRunning <= totalPercent) {
 
             c = holder.lockCanvas();
