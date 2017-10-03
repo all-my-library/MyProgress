@@ -22,6 +22,7 @@ class DrawProgressCircleHelper {
     private float progressSize;
     private boolean hasName;
     private int degrees, startAngle;
+    private int purposePercent, runningPercent;
 
     DrawProgressCircleHelper() {
 
@@ -125,7 +126,7 @@ class DrawProgressCircleHelper {
 
     void drawCircle(Canvas canvas, float progress) {
 
-        Log.e("test", progress + " -- ");
+        pathAnimation.reset();
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         pathAnimation.addArc(rectF, startAngle, progress);
         canvas.drawPath(pathAnimation, paintProgress);

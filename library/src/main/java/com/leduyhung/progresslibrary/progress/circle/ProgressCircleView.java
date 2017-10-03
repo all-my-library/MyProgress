@@ -25,7 +25,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     private boolean isStop, hasName;
     private float radius, sizeProgress;
     private int colorBackground, colorBackgroundProgress, colorProgress, colorValuePercent, colorNameProgress;
-    private int percent, totalPercent, percentRunning;
+    private int percent, totalPercent;
     private String nameProgress;
 
     public ProgressCircleView(Context context) {
@@ -55,8 +55,8 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         super.onLayout(changed, left, top, right, bottom);
 
         initView(0, 0, getWidth(), getHeight());
-        if (thread != null && !thread.isAlive())
-            thread.start();
+//        if (thread != null && !thread.isAlive())
+//            thread.start();
     }
 
     @Override
@@ -97,6 +97,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
 
         runProgressAnimation();
         thread = null;
+        isStop = true;
     }
 
     public void setPercent(int percent) {
@@ -104,13 +105,13 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         if (!isStop) {
 
             thread.interrupt();
-            percentRunning = 0;
         }
 
         thread = new Thread(this);
         this.percent = percent;
         calculatorTotalPercent();
         thread.start();
+        isStop = false;
     }
 
     private void getAttribute(Context context, AttributeSet attrs) {
@@ -136,6 +137,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         holder.setFormat(PixelFormat.TRANSPARENT);
         thread = new Thread(this);
         drawHelper = new DrawProgressCircleHelper();
+        isStop = false;
     }
 
     private void initView(float left, float top, float right, float bottom) {
@@ -158,23 +160,25 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     private void runProgressAnimation() {
 
         Canvas c;
-        percentRunning = 0;
-        while (percentRunning <= totalPercent) {
+        int percentRunning = 0;
+        while (percentRunning < totalPercent) {
 
             c = holder.lockCanvas();
             if (c != null) {
 
-                drawHelper.drawCircle(c, percentRunning);
-                holder.unlockCanvasAndPost(c);
+                percentRunning++;
                 if (totalPercent - percentRunning < 1) {
 
-                    totalPercent += totalPercent - percentRunning;
+                    percentRunning = totalPercent;
                 }
-                percentRunning += 1;
+                drawHelper.drawCircle(c, percentRunning);
+                holder.unlockCanvasAndPost(c);
             } else {
 
                 break;
             }
         }
+
+        return;
     }
 }

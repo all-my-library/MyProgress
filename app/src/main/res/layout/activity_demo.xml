@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         custom:progress_circle_percent="90"
-        custom:progress_circle_radius="100dp"
+        custom:progress_circle_radius="60dp"
         custom:progress_circle_size_progress="4dp"
         custom:progress_circle_color_background="@color/transparent"
         custom:progress_circle_color_progress="@color/colorAccent"
