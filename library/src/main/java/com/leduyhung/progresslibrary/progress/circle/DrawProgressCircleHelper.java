@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
-import android.util.Log;
 
 /**
  * Created by hungleduy on 10/1/17.
@@ -20,9 +19,9 @@ class DrawProgressCircleHelper {
 
     private float radius;
     private float progressSize;
-    private boolean hasName;
+    private boolean hasName, animationComplete;
     private int degrees, startAngle;
-    private int purposePercent, runningPercent;
+    private int purposePercent;
 
     DrawProgressCircleHelper() {
 
@@ -37,6 +36,7 @@ class DrawProgressCircleHelper {
         paintName = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintName.setTextAlign(Paint.Align.CENTER);
         paintName.setTextSize(20);
+        animationComplete = false;
     }
 
     private void drawName(Canvas canvas, float x, float y) {
@@ -47,13 +47,24 @@ class DrawProgressCircleHelper {
 
     private void drawContructCircle(Canvas canvas, float x, float y) {
 
+        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.ADD);
         canvas.drawCircle(x, y, radius - (progressSize / 2), paintBackground);
+
         if (!hasName) {
             canvas.drawCircle(x, y, radius, paintBorder);
         } else {
 
             pathContruct.addArc(rectF, startAngle, 290);
             canvas.drawPath(pathContruct, paintBorder);
+        }
+
+        if (animationComplete) {
+
+            pathAnimation.reset();
+            pathAnimation.addArc(rectF, startAngle, purposePercent);
+            canvas.drawPath(pathAnimation, paintProgress);
+            drawValue(canvas);
+            drawPercent(canvas);
         }
     }
 
@@ -116,6 +127,16 @@ class DrawProgressCircleHelper {
     void setLocationToDrawCircleAnimation(float left, float top, float right, float bottom) {
 
         rectF.set(left + ((right / 2) - radius), top + ((bottom / 2) - radius), right - ((right / 2) - radius), bottom - ((bottom / 2) - radius));
+    }
+
+    void setPurposePercent(int percent) {
+
+        this.purposePercent = percent;
+    }
+
+    void setAnimationComplete(boolean isComplete) {
+
+        this.animationComplete = isComplete;
     }
 
     void drawConstruct(Canvas canvas, float x, float y) {

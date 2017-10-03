@@ -55,6 +55,11 @@ public class DemoActivity extends AppCompatActivity {
     private void initProgressCircle() {
 
         progressCircleView = findViewById(R.id.progress_circle);
-        progressCircleView.setPercent(100);
+        progressCircleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressCircleView.setPercent(20);
+            }
+        });
     }
 }

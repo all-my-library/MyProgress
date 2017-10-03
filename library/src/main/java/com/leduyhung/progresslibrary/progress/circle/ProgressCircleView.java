@@ -25,7 +25,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     private boolean isStop, hasName;
     private float radius, sizeProgress;
     private int colorBackground, colorBackgroundProgress, colorProgress, colorValuePercent, colorNameProgress;
-    private int percent, totalPercent;
+    private int percent, totalPercent, percentRunning;
     private String nameProgress;
 
     public ProgressCircleView(Context context) {
@@ -55,8 +55,8 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         super.onLayout(changed, left, top, right, bottom);
 
         initView(0, 0, getWidth(), getHeight());
-//        if (thread != null && !thread.isAlive())
-//            thread.start();
+        if (thread != null && !thread.isAlive())
+            thread.start();
     }
 
     @Override
@@ -112,6 +112,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         calculatorTotalPercent();
         thread.start();
         isStop = false;
+        invalidate();
     }
 
     private void getAttribute(Context context, AttributeSet attrs) {
@@ -155,30 +156,55 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     private void calculatorTotalPercent() {
 
         totalPercent = (percent * drawHelper.getDegress()) / 100;
+        drawHelper.setPurposePercent(totalPercent);
+    }
+
+    private void calculatorPercentRunning() {
+
+        if (percentRunning < totalPercent) {
+
+            percentRunning += 2;
+            if (totalPercent - percentRunning <= 1) {
+
+                percentRunning = totalPercent;
+            }
+        } else if (percentRunning > totalPercent) {
+
+            percentRunning -= 2;
+            if (percentRunning - totalPercent <= 1) {
+
+                percentRunning = totalPercent;
+            }
+        }
     }
 
     private void runProgressAnimation() {
 
         Canvas c;
-        int percentRunning = 0;
-        while (percentRunning < totalPercent) {
+        drawHelper.setAnimationComplete(false);
+        while (holder.getSurface().isValid() && !isStop) {
 
-            c = holder.lockCanvas();
-            if (c != null) {
+            if (percentRunning != totalPercent) {
+                c = holder.lockCanvas();
+                if (c != null) {
 
-                percentRunning++;
-                if (totalPercent - percentRunning < 1) {
+                    calculatorPercentRunning();
+                    drawHelper.drawCircle(c, percentRunning);
+                    holder.unlockCanvasAndPost(c);
+                } else {
 
-                    percentRunning = totalPercent;
+                    break;
                 }
-                drawHelper.drawCircle(c, percentRunning);
-                holder.unlockCanvasAndPost(c);
             } else {
+
 
                 break;
             }
         }
 
+        percentRunning = totalPercent;
+        drawHelper.setAnimationComplete(true);
+        postInvalidate();
         return;
     }
 }
