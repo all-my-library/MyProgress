@@ -34,6 +34,7 @@
         custom:progress_circle_size_progress="4dp"
         custom:progress_circle_color_background="@color/transparent"
         custom:progress_circle_color_progress="@color/colorAccent"
+        custom:progress_circle_color_background_progress="@color/blue"
         custom:progress_circle_text_color_percent="@color/blue"
         custom:progress_circle_text_color_name_percent="@color/blue"
         custom:progress_circle_text_name="Tiến trình"
