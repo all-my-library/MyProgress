@@ -186,7 +186,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
 
             if (percentRunning != totalPercent) {
                 c = holder.lockCanvas();
-                if (c != null) {
+                if (c != null && holder.getSurface().isValid()) {
 
                     calculatorPercentRunning();
                     drawHelper.drawCircle(c, percentRunning);
@@ -202,9 +202,16 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
             }
         }
 
+
         percentRunning = totalPercent;
         drawHelper.setAnimationComplete(true);
         postInvalidate();
+        c = holder.lockCanvas();
+        if (c != null && holder.getSurface().isValid()) {
+
+            drawHelper.closeDraw(c);
+            holder.unlockCanvasAndPost(c);
+        }
         return;
     }
 }

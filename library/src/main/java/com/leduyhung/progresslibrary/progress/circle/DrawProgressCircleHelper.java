@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.RectF;
 
 /**
@@ -13,7 +14,7 @@ import android.graphics.RectF;
 
 class DrawProgressCircleHelper {
 
-    private Paint paintBackground, paintBorder, paintProgress, paintName;
+    private Paint paintBackground, paintBorder, paintProgress, paintName, paintValue, paintPercent;
     private Path pathAnimation, pathContruct;
     private RectF rectF;
 
@@ -31,11 +32,17 @@ class DrawProgressCircleHelper {
         paintBackground = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintBorder = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintProgress = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paintPercent = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintBorder.setStyle(Paint.Style.STROKE);
         paintProgress.setStyle(Paint.Style.STROKE);
         paintName = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paintValue = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintName.setTextAlign(Paint.Align.CENTER);
+        paintValue.setTextAlign(Paint.Align.CENTER);
+        paintPercent.setTextAlign(Paint.Align.CENTER);
         paintName.setTextSize(20);
+        paintValue.setTextSize(80);
+        paintPercent.setTextSize(30);
         animationComplete = false;
     }
 
@@ -63,18 +70,26 @@ class DrawProgressCircleHelper {
             pathAnimation.reset();
             pathAnimation.addArc(rectF, startAngle, purposePercent);
             canvas.drawPath(pathAnimation, paintProgress);
-            drawValue(canvas);
-            drawPercent(canvas);
+            drawValue(canvas, purposePercent);
         }
     }
 
-    private void drawValue(Canvas canvas) {
+    private void drawValue(Canvas canvas, float progress) {
 
-
+        Rect boundText = new Rect();
+        paintValue.getTextBounds(calculatorProgressToPercent(progress), 0, calculatorProgressToPercent(progress).length(), boundText);
+        canvas.drawText(calculatorProgressToPercent(progress), rectF.centerX(), rectF.centerY() + boundText.height() / 2, paintValue);
+        drawPercent(canvas, boundText);
     }
 
-    private void drawPercent(Canvas canvas) {
+    private void drawPercent(Canvas canvas, Rect rectValue) {
 
+        canvas.drawText("%", rectF.centerX() + rectValue.width() - (rectValue.width() / 3), rectF.centerY(), paintPercent);
+    }
+
+    private String calculatorProgressToPercent(float progress) {
+
+        return ((int)(progress * 100) / degrees) + "";
     }
 
     void setHasName(boolean hasName) {
@@ -117,6 +132,8 @@ class DrawProgressCircleHelper {
 
         paintBorder.setColor(color);
         paintName.setColor(color);
+        paintValue.setColor(color);
+        paintPercent.setColor(color);
     }
 
     void setLoadingColor(int color) {
@@ -151,7 +168,12 @@ class DrawProgressCircleHelper {
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         pathAnimation.addArc(rectF, startAngle, progress);
         canvas.drawPath(pathAnimation, paintProgress);
-        drawValue(canvas);
-        drawPercent(canvas);
+        drawValue(canvas, progress);
+    }
+
+    void closeDraw(Canvas canvas) {
+
+        pathAnimation.close();
+        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
     }
 }
