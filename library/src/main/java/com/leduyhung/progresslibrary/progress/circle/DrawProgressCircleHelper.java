@@ -23,6 +23,7 @@ class DrawProgressCircleHelper {
     private boolean hasName, animationComplete;
     private int degrees, startAngle;
     private int purposePercent;
+    private String nameProgress;
 
     DrawProgressCircleHelper() {
 
@@ -40,16 +41,13 @@ class DrawProgressCircleHelper {
         paintName.setTextAlign(Paint.Align.CENTER);
         paintValue.setTextAlign(Paint.Align.CENTER);
         paintPercent.setTextAlign(Paint.Align.CENTER);
-        paintName.setTextSize(20);
-        paintValue.setTextSize(80);
-        paintPercent.setTextSize(30);
         animationComplete = false;
     }
 
     private void drawName(Canvas canvas, float x, float y) {
 
         if (hasName)
-            canvas.drawText("Tiến trình", x, y * 2 - progressSize, paintName);
+            canvas.drawText(nameProgress, x, y * 2 - progressSize, paintName);
     }
 
     private void drawContructCircle(Canvas canvas, float x, float y) {
@@ -107,6 +105,11 @@ class DrawProgressCircleHelper {
         }
     }
 
+    void setNameProgress(String name) {
+
+        this.nameProgress = name;
+    }
+
     int getDegress() {
 
         return degrees;
@@ -114,6 +117,17 @@ class DrawProgressCircleHelper {
 
     void setRadius(float radius) {
         this.radius = radius;
+    }
+
+    void setNameSize(float nameSize) {
+
+        paintName.setTextSize(nameSize);
+    }
+
+    void setValueSize(float valueSize) {
+
+        paintValue.setTextSize(valueSize);
+        paintPercent.setTextSize(valueSize / 3);
     }
 
     void setBorderWith(float progressSize) {
@@ -131,7 +145,15 @@ class DrawProgressCircleHelper {
     void setBorderColor(int color) {
 
         paintBorder.setColor(color);
+    }
+
+    void setNameColor(int color) {
+
         paintName.setColor(color);
+    }
+
+    void setValueColor(int color) {
+
         paintValue.setColor(color);
         paintPercent.setColor(color);
     }

@@ -19,12 +19,14 @@
     <declare-styleable name="progress_circle_view">
         <attr name="progress_circle_percent" format="integer"/>
         <attr name="progress_circle_radius" format="dimension"/>
+        <attr name="progress_circle_name_size" format="dimension"/>
+        <attr name="progress_circle_value_size" format="dimension"/>
         <attr name="progress_circle_size_progress" format="dimension"/>
         <attr name="progress_circle_color_background" format="color"/>
         <attr name="progress_circle_color_progress" format="color"/>
+        <attr name="progress_circle_color_name" format="color"/>
+        <attr name="progress_circle_color_value" format="color"/>
         <attr name="progress_circle_color_background_progress" format="color"/>
-        <attr name="progress_circle_text_color_percent" format="color"/>
-        <attr name="progress_circle_text_color_name_percent" format="color"/>
         <attr name="progress_circle_text_name" format="string"/>
         <attr name="progress_circle_has_name" format="boolean"/>
     </declare-styleable>

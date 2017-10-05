@@ -36,8 +36,10 @@
         custom:progress_circle_color_background="@color/transparent"
         custom:progress_circle_color_progress="@color/colorAccent"
         custom:progress_circle_color_background_progress="@color/blue"
-        custom:progress_circle_text_color_percent="@color/blue"
-        custom:progress_circle_text_color_name_percent="@color/blue"
-        custom:progress_circle_text_name="Tiến trình"
-        custom:progress_circle_has_name="true"/>
+        custom:progress_circle_color_value="@color/blue"
+        custom:progress_circle_color_name="@color/blue"
+        custom:progress_circle_text_name="PROGRESS"
+        custom:progress_circle_has_name="true"
+        custom:progress_circle_name_size="12dp"
+        custom:progress_circle_value_size="40dp"/>
 </LinearLayout>

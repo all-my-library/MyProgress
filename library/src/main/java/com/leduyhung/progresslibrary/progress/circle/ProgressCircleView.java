@@ -23,8 +23,8 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     private DrawProgressCircleHelper drawHelper;
 
     private boolean isStop, hasName;
-    private float radius, sizeProgress;
-    private int colorBackground, colorBackgroundProgress, colorProgress, colorValuePercent, colorNameProgress;
+    private float radius, sizeProgress, sizeName, sizeValue;
+    private int colorBackground, colorBackgroundProgress, colorProgress, colorValue, colorName;
     private int percent, totalPercent, percentRunning;
     private String nameProgress;
 
@@ -47,7 +47,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        setMeasuredDimension((int)(radius * 2 + sizeProgress + 2), (int)(radius * 2 + sizeProgress + 2));
+        setMeasuredDimension((int) (radius * 2 + sizeProgress + 2), (int) (radius * 2 + sizeProgress + 2));
     }
 
     @Override
@@ -124,11 +124,13 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
             colorBackground = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_color_background, context.getResources().getColor(R.color.transparent));
             colorBackgroundProgress = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_color_background_progress, context.getResources().getColor(R.color.blue));
             colorProgress = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_color_progress, context.getResources().getColor(R.color.white));
-            colorValuePercent = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_text_color_percent, context.getResources().getColor(R.color.blue));
-            colorNameProgress = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_text_color_name_percent, context.getResources().getColor(R.color.blue));
             percent = typedArray.getInt(R.styleable.progress_circle_view_progress_circle_percent, 100);
             hasName = typedArray.getBoolean(R.styleable.progress_circle_view_progress_circle_has_name, false);
             nameProgress = typedArray.getString(R.styleable.progress_circle_view_progress_circle_text_name);
+            sizeName = typedArray.getDimensionPixelSize(R.styleable.progress_circle_view_progress_circle_name_size, 30);
+            sizeValue = typedArray.getDimensionPixelSize(R.styleable.progress_circle_view_progress_circle_value_size, 80);
+            colorName = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_color_name, context.getResources().getColor(R.color.blue));
+            colorValue = typedArray.getColor(R.styleable.progress_circle_view_progress_circle_color_value, context.getResources().getColor(R.color.blue));
             typedArray.recycle();
         }
 
@@ -146,8 +148,13 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         drawHelper.setBackgroundColor(colorBackground);
         drawHelper.setBorderColor(colorBackgroundProgress);
         drawHelper.setLoadingColor(colorProgress);
+        drawHelper.setNameColor(colorName);
+        drawHelper.setValueColor(colorValue);
         drawHelper.setRadius(radius);
+        drawHelper.setNameSize(sizeName);
+        drawHelper.setValueSize(sizeValue);
         drawHelper.setHasName(hasName);
+        drawHelper.setNameProgress(nameProgress);
         drawHelper.setBorderWith(sizeProgress);
         drawHelper.setLocationToDrawCircleAnimation(left, top, right, bottom);
         calculatorTotalPercent();
