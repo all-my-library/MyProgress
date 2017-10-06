@@ -15,7 +15,6 @@ import com.leduyhung.progresslibrary.R;
 /**
  * Created by hungleduy on 10/1/17.
  */
-
 public class ProgressCircleView extends SurfaceView implements Runnable {
 
     private SurfaceHolder holder;
@@ -115,6 +114,21 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         invalidate();
     }
 
+    public int getPercent() {
+
+        return percent;
+    }
+
+    public boolean isRunning() {
+
+        return !isStop;
+    }
+
+    public boolean isHasTitle() {
+
+        return hasName;
+    }
+
     private void getAttribute(Context context, AttributeSet attrs) {
 
         if (attrs != null) {
@@ -170,14 +184,14 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
 
         if (percentRunning < totalPercent) {
 
-            percentRunning += 2;
+            percentRunning += 3;
             if (totalPercent - percentRunning <= 1) {
 
                 percentRunning = totalPercent;
             }
         } else if (percentRunning > totalPercent) {
 
-            percentRunning -= 2;
+            percentRunning -= 3;
             if (percentRunning - totalPercent <= 1) {
 
                 percentRunning = totalPercent;
