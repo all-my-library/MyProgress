@@ -62,8 +62,10 @@ private void initLoadingDotView() {
 </pre>
 <h3>ProgressView</h3>
 <img src="https://github.com/all-my-library/MyProgress/blob/master/art/progress_view.gif"></a>
+<img src="https://github.com/all-my-library/MyProgress/blob/master/art/progress_view_no_title.gif"></a>
 <p><b>1: Declare in xml</b></p>
 
+<p><b>Progress with title</b></p>
 <pre> 
 com.leduyhung.progresslibrary.progress.circle.ProgressCircleView
         android:id="@+id/progress_circle"
@@ -80,6 +82,23 @@ com.leduyhung.progresslibrary.progress.circle.ProgressCircleView
         custom:progress_circle_text_name="PROGRESS"
         custom:progress_circle_has_name="true"
         custom:progress_circle_name_size="12dp"
+        custom:progress_circle_value_size="40dp"
+</pre>
+
+<p><b>Progress no title</b></p>
+<pre id = 1> 
+com.leduyhung.progresslibrary.progress.circle.ProgressCircleView
+        android:id="@+id/progress_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:progress_circle_percent="0"
+        custom:progress_circle_radius="60dp"
+        custom:progress_circle_size_progress="4dp"
+        custom:progress_circle_color_background="@color/transparent"
+        custom:progress_circle_color_progress="@color/colorAccent"
+        custom:progress_circle_color_background_progress="@color/blue"
+        custom:progress_circle_color_value="@color/blue"
+        custom:progress_circle_has_name="false"
         custom:progress_circle_value_size="40dp"
 </pre>
 <p><b>2: Call to set percent</b></p>
