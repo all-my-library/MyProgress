@@ -8,6 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="LOADING VIEW"/>
 
     <com.leduyhung.progresslibrary.loading.circle.LoadingCircleView
@@ -26,20 +27,23 @@
         custom:loading_dot_distance="7dp"
         custom:loading_dot_color="@color/colorAccent"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="PROGRESS VIEW"/>
+
     <com.leduyhung.progresslibrary.progress.circle.ProgressCircleView
         android:id="@+id/progress_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        custom:progress_circle_percent="90"
+        custom:progress_circle_percent="0"
         custom:progress_circle_radius="60dp"
         custom:progress_circle_size_progress="4dp"
         custom:progress_circle_color_background="@color/transparent"
         custom:progress_circle_color_progress="@color/colorAccent"
         custom:progress_circle_color_background_progress="@color/blue"
         custom:progress_circle_color_value="@color/blue"
-        custom:progress_circle_color_name="@color/blue"
-        custom:progress_circle_text_name="PROGRESS"
-        custom:progress_circle_has_name="true"
-        custom:progress_circle_name_size="12dp"
+        custom:progress_circle_has_name="false"
         custom:progress_circle_value_size="40dp"/>
 </LinearLayout>

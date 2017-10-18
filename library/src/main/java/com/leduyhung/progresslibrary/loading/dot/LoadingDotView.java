@@ -80,7 +80,7 @@ public class LoadingDotView extends SurfaceView implements Runnable {
     @Override
     public void run() {
 
-        while (!holder.getSurface().isValid() && !isStop)
+        while (holder != null && !holder.getSurface().isValid() && !isStop)
             continue;
 
         runDot();
@@ -118,7 +118,7 @@ public class LoadingDotView extends SurfaceView implements Runnable {
         int y = getHeight() / 2;
         Canvas c;
 
-        while (!isStop && holder.getSurface().isValid()) {
+        while (!isStop && holder != null && holder.getSurface().isValid()) {
 
             try {
                 c = holder.lockCanvas();
@@ -133,7 +133,7 @@ public class LoadingDotView extends SurfaceView implements Runnable {
             }
         }
 
-        if (holder.getSurface().isValid()) {
+        if (holder != null && holder.getSurface().isValid()) {
             c = holder.lockCanvas();
             if (c != null) {
                 runDotHelper.closeDraw(c);

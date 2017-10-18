@@ -77,17 +77,22 @@ class DrawProgressCircleHelper {
         Rect boundText = new Rect();
         paintValue.getTextBounds(calculatorProgressToPercent(progress), 0, calculatorProgressToPercent(progress).length(), boundText);
         canvas.drawText(calculatorProgressToPercent(progress), rectF.centerX(), rectF.centerY() + boundText.height() / 2, paintValue);
-        drawPercent(canvas, boundText);
+        drawPercent(canvas, boundText, progress);
     }
 
-    private void drawPercent(Canvas canvas, Rect rectValue) {
+    private void drawPercent(Canvas canvas, Rect rectValue, float progress) {
 
-        canvas.drawText("%", rectF.centerX() + rectValue.width() - (rectValue.width() / 3), rectF.centerY(), paintPercent);
+        if (progress < 9) {
+
+            canvas.drawText("%", rectF.centerX() + rectValue.width(), rectF.centerY(), paintPercent);
+        } else {
+            canvas.drawText("%", rectF.centerX() + rectValue.width() - (rectValue.width() / 3), rectF.centerY(), paintPercent);
+        }
     }
 
     private String calculatorProgressToPercent(float progress) {
 
-        return ((int)(progress * 100) / degrees) + "";
+        return ((int) (progress * 100) / degrees) + "";
     }
 
     void setHasName(boolean hasName) {

@@ -83,7 +83,7 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
     @Override
     public void run() {
 
-        while (!holder.getSurface().isValid() && !isStop)
+        while (holder != null && !holder.getSurface().isValid() && !isStop)
             continue;
 
         runCircle();
@@ -119,7 +119,7 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
         int seed = speed;
         int seed2 = seed * 3;
         Canvas c;
-        while (progress <= 140 && !isStop && holder.getSurface().isValid()) {
+        while (progress <= 140 && !isStop && holder != null && holder.getSurface().isValid()) {
             try {
                 c = holder.lockCanvas();
                 if (c != null) {
@@ -150,7 +150,7 @@ public class LoadingCircleView extends SurfaceView implements Runnable {
             }
         }
 
-        if (holder.getSurface().isValid()) {
+        if (holder != null && holder.getSurface().isValid()) {
             c = holder.lockCanvas();
             if (c != null) {
                 drawLoadingCircleHelper.closeDraw(c);
