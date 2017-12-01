@@ -4,9 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.leduyhung.progresslibrary.loading.circle.LoadingCircleView;
-import com.leduyhung.progresslibrary.loading.dot.LoadingDotView;
-import com.leduyhung.progresslibrary.progress.circle.ProgressCircleView;
+import leduyhung.view.myprogress.loading.circle.LoadingCircleView;
+import leduyhung.view.myprogress.loading.dot.LoadingDotView;
+import leduyhung.view.myprogress.progress.circle.ProgressCircleView;
 
 public class DemoActivity extends AppCompatActivity {
 

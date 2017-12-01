@@ -1,4 +1,4 @@
-package com.leduyhung.progresslibrary.loading.circle;
+package leduyhung.view.myprogress.loading.circle;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

@@ -1,4 +1,4 @@
-package com.leduyhung.progresslibrary.loading.circle;
+package leduyhung.view.myprogress.loading.circle;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-import com.leduyhung.progresslibrary.R;
+import leduyhung.view.myprogress.R;
 
 /**
  * Created by hungleduy on 9/29/17.

@@ -1,4 +1,4 @@
-package com.leduyhung.progresslibrary.loading.dot;
+package leduyhung.view.myprogress.loading.dot;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

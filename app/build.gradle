@@ -26,5 +26,6 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation project(':library')
+//    implementation project(':my-progress')
+    compile 'leduyhung.my.view:my-progress:0.0.2'
 }
