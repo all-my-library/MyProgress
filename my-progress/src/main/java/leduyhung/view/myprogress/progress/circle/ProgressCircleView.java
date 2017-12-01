@@ -90,7 +90,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
     @Override
     public void run() {
 
-        while (!holder.getSurface().isValid() && !isStop)
+        while (holder != null && !holder.getSurface().isValid() && !isStop)
             continue;
 
         runProgressAnimation();
@@ -203,11 +203,11 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
         Canvas c;
         drawHelper.setAnimationComplete(false);
         try {
-            while (holder.getSurface().isValid() && !isStop) {
+            while (holder != null && holder.getSurface().isValid() && !isStop) {
 
                 if (percentRunning != totalPercent) {
                     c = holder.lockCanvas();
-                    if (c != null && holder.getSurface().isValid()) {
+                    if (c != null && holder != null && holder.getSurface().isValid()) {
 
                         calculatorPercentRunning();
                         drawHelper.drawCircle(c, percentRunning);
@@ -228,7 +228,7 @@ public class ProgressCircleView extends SurfaceView implements Runnable {
             drawHelper.setAnimationComplete(true);
             postInvalidate();
             c = holder.lockCanvas();
-            if (c != null && holder.getSurface().isValid()) {
+            if (c != null && holder != null && holder.getSurface().isValid()) {
 
                 drawHelper.closeDraw(c);
                 holder.unlockCanvasAndPost(c);
