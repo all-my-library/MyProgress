@@ -36,7 +36,7 @@ private void initLoadingCircle() {
 <img src="https://github.com/all-my-library/MyProgress/blob/master/art/loading_dot.gif" style="max-width:100%"></a>
 <p><b>1: Declare in xml</b></p>
 <pre>
-com.leduyhung.progresslibrary.loading.dot.LoadingDotView
+leduyhung.view.myprogress.loading.dot.LoadingDotView
         android:id="@+id/loading_dot"
         android:layout_width="match_parent"
         android:layout_height="40dp"
