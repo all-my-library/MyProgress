@@ -145,7 +145,7 @@ public class LoadingDotView extends SurfaceView implements Runnable {
 
     public void showLoading(boolean show) {
 
-        if (show) {
+        if (show && isStop) {
             if (thread == null) {
                 thread = new Thread(this);
                 thread.start();

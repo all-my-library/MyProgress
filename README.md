@@ -1,5 +1,5 @@
 # COMPILE
-compile 'leduyhung.my.view:my-progress:0.0.3'
+compile 'leduyhung.my.view:my-progress:0.0.4'
 # HOW TO USE
 <h3>LoadingCircleView</h3>
 <img src="https://github.com/all-my-library/MyProgress/blob/master/art/loading_circle.gif"></a>

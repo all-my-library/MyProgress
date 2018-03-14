@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/leduyhung'
     gitUrl = 'https://github.com/all-my-library/MySpinner'
 
-    libraryVersion = "0.0.3"
+    libraryVersion = "0.0.4"
 
     developerId = 'leduyhung'
     developerName = 'leduyhung'
@@ -26,7 +26,7 @@ ext {
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '27.0.3'
 
     publishNonDefault true
 
